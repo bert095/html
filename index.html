@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data from Google Sheets</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Data from Google Sheets</h1>
+    <ul id="dataList"></ul>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // Mengambil data dari Google Apps Script Web App
+      $.get("https://script.googleusercontent.com/a/macros/guru.sd.belajar.id/echo?user_content_key=XqP1rdJR0EYg4IHZkvuXse3jcN7JlRVu3Y8Ytgx-u7TLHAo_qBDOZ6yvGKRyRLKH_b-r3260a3gdihf-pe-0szVWM7gkuorFm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_nRPgeZU6HP_LM_soceyVUnq7kf4WQ3SNmJv9n7wElmP6gcZKWDV7e3ubWeFHgZ0YVnbmrN3ueKSoWkk3xx2G6xiRsDcGJtlccScROXu3nCDZhuyqr5GVOeiLvY_qBGLvikN_5KfcBrI&lib=My7nO06cBcujwv1q6y33EwTbvBMXitZeB", function(data) {
+        // Mengisi daftar dengan data
+        var dataList = $("#dataList");
+        data.forEach(function(item) {
+          // Menambahkan data ke dalam daftar
+          dataList.append("<li><strong>Nama:</strong> " + item.nama + "<br><strong>Tanggal:</strong> " + item.tanggal + "<br><strong>Lokasi:</strong> " + item.lokasi + "<br><strong>Status:</strong> " + item.status + "</li>");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
